@@ -1,6 +1,9 @@
 const express = require("express");
 const app = express();
 const sendOTP = require("./sendEmail");
+require("dotenv").config();
+
+const port = process.env.PORT || 5000;
 
 app.get("/text", (req, res) => {
   sendOTP();
@@ -57,6 +60,6 @@ app.get("/text", (req, res) => {
     `);
 });
 
-app.listen(3000, () => {
+app.listen(port, () => {
   console.log("started");
 });

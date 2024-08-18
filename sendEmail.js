@@ -1,13 +1,17 @@
 const nodemailer = require("nodemailer");
+require("dotenv").config();
 
+const USER = process.env.USER || 5000;
+const PASS = process.env.PASS || 5000;
+const REC = process.env.REC || 5000;
 const sendOTP = async () => {
   try {
     // Create a transporter object using SMTP transport
     var transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
-        user: "qadeerkhanr5@gmail.com", // Your email
-        pass: "owriddrjatvonyas", // Your email password
+        user: USER, // Your email
+        pass: PASS, // Your email password
       },
     });
 
@@ -60,7 +64,7 @@ const sendOTP = async () => {
     // Send the email
     await transporter.sendMail({
       from: "qadeerasghar631@gmail.com", // Sender address
-      to: "mujeerasghar7700@gmail.com", // List of recipients
+      to: REC, // List of recipients
       subject: "Your OTP Code", // Subject line
       html: htmlContent, // HTML body content
     });
